@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Mine
+
 set -e
 
 restore_configs
@@ -16,7 +18,7 @@ $CFGDIR/boards/skr_pro_dual
 $CFGDIR/accessories/laser
 
 opt_add SPINDLE_LASER_PWM_PIN PC9
-opt_add SPINDLE_LASER_ENA_PIN PB0 // Heater2
+opt_add SPINDLE_LASER_ENA_PIN PB0
 
 
 opt_set X_DRIVER_TYPE  "TMC2209"
@@ -31,4 +33,15 @@ opt_set Y2_CURRENT 900
 opt_disable \
     E0_DRIVER_TYPE
 
-export PLATFORMIO_ENV=BIGTREE_SKR_PRO
+# CUSTOM SETTINGS FOR MY CNC MACHINE
+# Inverse the Z motor.
+opt_set INVERT_Z_DIR true
+# Enable Adafruit Lib for RBG Strip
+opt_add NEOPIXEL_LED
+opt_set NEOPIXEL_PIN PF8
+# NEO_GRBW, NEO_RGBW, NEO_GRB, NEO_RBG, etc.
+opt_set NEOPIXEL_TYPE NEO_GRBW
+opt_set NEOPIXEL_PIXELS 30
+opt_set NEOPIXEL_BRIGHTNESS 255
+
+export PLATFORMIO_ENV=BTT_SKR_PRO
