@@ -35,16 +35,21 @@ opt_disable \
 
 # CUSTOM SETTINGS FOR MY CNC MACHINE
 # Inverse the Z motor.
-opt_set INVERT_Z_DIR true
+opt_set INVERT_Z_DIR "true"
 # Enable Adafruit Lib for RBG Strip
 opt_add NEOPIXEL_LED
-opt_set NEOPIXEL_PIN PF8
+opt_set NEOPIXEL_PIN "PF8"
 # NEO_GRBW, NEO_RGBW, NEO_GRB, NEO_RBG, etc.
-opt_set NEOPIXEL_TYPE NEO_RBG
-opt_set NEOPIXEL_PIXELS 118
-opt_set NEOPIXEL_BRIGHTNESS 255
+opt_set NEOPIXEL_TYPE "NEO_RBG"
+opt_set NEOPIXEL_PIXELS "118"
+opt_set NEOPIXEL_BRIGHTNESS "255"
 
 # Make sure Z_MIN_ENDSTOP is open
-opt_set Z_MIN_ENDSTOP_HIT_STATE HIGH
+opt_set Z_MIN_ENDSTOP_HIT_STATE "HIGH"
+opt_set Z_MIN_PROBE_ENDSTOP_HIT_STATE "HIGH"
+
+opt_set X_BED_SIZE "600"
+opt_set Y_BED_SIZE "600"
+opt_set Z_MAX_POS "100"
 
 export PLATFORMIO_ENV=BIGTREE_SKR_PRO
