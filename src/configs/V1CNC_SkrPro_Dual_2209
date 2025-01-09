@@ -45,13 +45,17 @@ opt_set NEOPIXEL_PIXELS "118"
 opt_set NEOPIXEL_BRIGHTNESS "255"
 
 # Make sure Z_MIN_ENDSTOP is open
-opt_set Z_MIN_ENDSTOP_HIT_STATE "LOW"
-opt_set Z_MIN_PROBE_ENDSTOP_HIT_STATE "LOW"
+# Used for bugfix 2.1x
+# opt_set Z_MIN_ENDSTOP_HIT_STATE "LOW"
+# opt_set Z_MIN_PROBE_ENDSTOP_HIT_STATE "LOW"
+# Used for marlin
+opt_set Z_MIN_ENDSTOP_INVERTING "true"
+opt_set Z_MIN_PROBE_ENDSTOP_INVERTING "true"
 
 opt_set X_BED_SIZE "600"
 opt_set Y_BED_SIZE "600"
 opt_set Z_MAX_POS "100"
 
-opt_set MAX_SOFTWARE_ENDSTOPS
+opt_add MAX_SOFTWARE_ENDSTOPS
 
 export PLATFORMIO_ENV=BIGTREE_SKR_PRO
