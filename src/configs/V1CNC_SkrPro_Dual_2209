@@ -54,8 +54,11 @@ opt_set Z_MIN_PROBE_ENDSTOP_INVERTING "true"
 
 opt_set X_BED_SIZE "600"
 opt_set Y_BED_SIZE "600"
-opt_set Z_MAX_POS "100"
+opt_set Z_MAX_POS "60"
 
 opt_add MAX_SOFTWARE_ENDSTOPS
+
+# Set stepper timemout to 20mins
+opt_set DEFAULT_STEPPER_DEACTIVE_TIME 1200 
 
 export PLATFORMIO_ENV=BIGTREE_SKR_PRO
