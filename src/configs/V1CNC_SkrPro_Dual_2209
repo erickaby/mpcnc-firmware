@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Mine
+
 set -e
 
 restore_configs
@@ -15,8 +17,8 @@ $CFGDIR/accessories/dual-drivers-on-xy
 $CFGDIR/boards/skr_pro_dual
 $CFGDIR/accessories/laser
 
-opt_add SPINDLE_LASER_PWM_PIN PC9
-opt_add SPINDLE_LASER_ENA_PIN PB0 // Heater2
+opt_add SPINDLE_LASER_PWM_PIN "PF9"
+opt_add SPINDLE_LASER_ENA_PIN "PB0"
 
 
 opt_set X_DRIVER_TYPE  "TMC2209"
@@ -30,5 +32,38 @@ opt_set Y2_CURRENT 900
 
 opt_disable \
     E0_DRIVER_TYPE
+
+# CUSTOM SETTINGS FOR MY CNC MACHINE
+# Inverse the Z motor.
+opt_set INVERT_Z_DIR "true"
+# Enable Adafruit Lib for RBG Strip
+opt_add NEOPIXEL_LED
+opt_set NEOPIXEL_PIN PC9
+# NEO_GRBW, NEO_RGBW, NEO_GRB, NEO_RBG, etc.
+opt_set NEOPIXEL_TYPE "NEO_RGBW"
+opt_set NEOPIXEL_PIXELS "118"
+opt_set NEOPIXEL_BRIGHTNESS "255"
+
+# Make sure Z_MIN_ENDSTOP is open
+# Used for bugfix 2.1x
+# opt_set Z_MIN_ENDSTOP_HIT_STATE "LOW"
+# opt_set Z_MIN_PROBE_ENDSTOP_HIT_STATE "LOW"
+# Used for marlin
+opt_set Z_MIN_ENDSTOP_INVERTING "true"
+opt_set Z_MIN_PROBE_ENDSTOP_INVERTING "true"
+
+# Offsets
+opt_add Z_AFTER_HOMING 10
+opt_add MANUAL_Z_HOME_POS 3.0
+
+opt_set X_BED_SIZE "600"
+opt_set Y_BED_SIZE "600"
+opt_set Z_MAX_POS "60"
+
+opt_add MAX_SOFTWARE_ENDSTOPS
+
+# Set stepper timemout to 20mins
+opt_set DEFAULT_STEPPER_DEACTIVE_TIME 1200 
+
 
 export PLATFORMIO_ENV=BIGTREE_SKR_PRO
