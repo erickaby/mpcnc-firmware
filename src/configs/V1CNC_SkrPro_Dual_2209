@@ -52,6 +52,10 @@ opt_set NEOPIXEL_BRIGHTNESS "255"
 opt_set Z_MIN_ENDSTOP_INVERTING "true"
 opt_set Z_MIN_PROBE_ENDSTOP_INVERTING "true"
 
+# Offsets
+opt_add Z_AFTER_HOMING 10
+opt_add MANUAL_Z_HOME_POS 3.0
+
 opt_set X_BED_SIZE "600"
 opt_set Y_BED_SIZE "600"
 opt_set Z_MAX_POS "60"
@@ -60,5 +64,6 @@ opt_add MAX_SOFTWARE_ENDSTOPS
 
 # Set stepper timemout to 20mins
 opt_set DEFAULT_STEPPER_DEACTIVE_TIME 1200 
+
 
 export PLATFORMIO_ENV=BIGTREE_SKR_PRO
